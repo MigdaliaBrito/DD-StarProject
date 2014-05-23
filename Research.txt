@@ -1,2 +1,7 @@
 Research Notes / Ideas
 ===========
+Potential tools for this project:
+*SaSS
+*Angular (JS)
+*Node ?
+*Drupal
