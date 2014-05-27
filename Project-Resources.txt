@@ -9,3 +9,19 @@ https://www.evernote.com/pub/hitorokiwa/ddstargroupproject
 
 /* Dropbox
 https://www.dropbox.com/l/C7xFo8Y39UWech6VWHfPkp?
+
+
+/* HTML5/Javascript resources */
+
+//HTML5 Canvas Gridlines
+http://devhammer.net/blog/visualizing-layout-in-html5-canvas-with-gridlines
+
+//HTML5 JS Game Canvas Tutorial
+http://buddylindsey.com/starting-an-html-5-tile-based-canvas-game-game-area-and-character/
+
+//JS Chatroom Tutorial
+http://www.williammora.com/2013/03/nodejs-tutorial-building-chatroom-with.html
+
+//Dice Roll Simulator
+https://github.com/pschlump/dice-roller
+
