@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+  <head> 
+    <title> Dice </title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="diceHelp.js"></script>
+    <script>
+      $('document').ready(function(){
+        $("#rollButton").bind('click', function(){
+          
+          var die = $('input[name="die"]:checked').val();
+          var count = $('#count').val();
+          //alert(die + " " + count);
+          $("#diceRolls").html("");
+          for(var i = 0; i < count; i++){
+            
+            $("#diceRolls").append("Roll: " + rollDie(die) + "<br/>");
+          }
+        });      
+      
+      });
+    </script>
+  </head>
+  <body>
+    <div id="diceRolls">
+    </div>
+    <div id="dice">
+      Enter number of dice: <input type="text" name="count" id="count"/>
+      <input type="radio" name="die" value="6">6</input>
+      <input type="radio" name="die" value="8">8</input>
+      <input type="radio" name="die" value="10">10</input>
+      <input type="radio" name="die" value="20">20</input>
+      <button type="button" id="rollButton"> Roll </button>
+  
+  </body>
