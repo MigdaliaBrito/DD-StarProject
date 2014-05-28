@@ -3,36 +3,38 @@
 <html>
   <head> 
     <title> Dice </title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="diceHelp.js"></script>
     <script>
       $('document').ready(function(){
         $("#rollButton").bind('click', function(){
           
           var die = $('input[name="die"]:checked').val();
-          var count = $('#count').val();
-          //alert(die + " " + count);
+          var count = $('#count').val();          
           $("#diceRolls").html("");
-          for(var i = 0; i < count; i++){
-            
-            $("#diceRolls").append("Roll: " + rollDie(die) + "<br/>");
-          }
-        });      
-      
+          var rolls = rollDie(die, count);          
+          $.each(rolls, function(index, val){            
+            $("#diceRolls").append("Roll: " + val + "<br/>");
+          });
+        });  
       });
     </script>
   </head>
   <body>
+    
+    <div id="dice" style="float:left;">
+      Enter number of dice: <input type="text" name="count" id="count"/>
+      <ul style="list-style-type:none;">
+      <li><input type="radio" name="die" value="6">6</input></li>
+      <li><input type="radio" name="die" value="8">8</input></li>
+      <li><input type="radio" name="die" value="10">10</input></li>
+      <li><input type="radio" name="die" value="20">20</input></li>
+      <li><button type="button" id="rollButton"> Roll </button></li>
+      </ul>
+    </div>
+
     <div id="diceRolls">
     </div>
-    <div id="dice">
-      Enter number of dice: <input type="text" name="count" id="count"/>
-      <input type="radio" name="die" value="6">6</input>
-      <input type="radio" name="die" value="8">8</input>
-      <input type="radio" name="die" value="10">10</input>
-      <input type="radio" name="die" value="20">20</input>
-      <button type="button" id="rollButton"> Roll </button>
-    </div>
-  
   </body>
-  </html>
+</html>
+
