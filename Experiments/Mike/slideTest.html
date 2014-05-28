@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title> Slide Test </title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <style> 
+    #slider{
+      position: absolute;
+      left: 10860px;
+      width: 100%;
+      background-color: blue;
+      height: 100%;
+      min-height: 100%;
+    }
+    html, body{
+      width: 860px;
+      
+      height: 100%;
+      min-height: 100%;
+    }
+    body{
+      position: absolute;
+      background-color:red;
+    }
+  </style>
+  <script>
+  $(document).ready(function(){
+   $('#button').click(
+    function(){
+      $("slider").animate({
+        left: "0px"}, 1000);});    
+  });
+   
+    
+  </script>
+  
+</head>
+<body>
+  <button id="button"> Click Me </button>
+  <div id="slider">HEY </div>
+</body>
+</html>
+
+  
