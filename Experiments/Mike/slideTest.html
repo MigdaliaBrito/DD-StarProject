@@ -6,29 +6,32 @@
   <style> 
     #slider{
       position: absolute;
-      left: 10860px;
+      left: -3000px;
       width: 100%;
       background-color: blue;
       height: 100%;
       min-height: 100%;
+      display:none;
     }
     html, body{
-      width: 860px;
-      
+      width: 100%;      
       height: 100%;
       min-height: 100%;
     }
     body{
       position: absolute;
-      background-color:red;
+      background-color:white;
     }
   </style>
   <script>
-  $(document).ready(function(){
-   $('#button').click(
-    function(){
-      $("slider").animate({
-        left: "0px"}, 1000);});    
+  $(document).ready(function(){   
+    var counter = 0;
+    $("#slider").hide();
+    $('#button').click(function(){  
+      counter++ % 2 == 0 ? $("#slider").show().stop().animate({left: '0px'},1000) :
+        $("#slider").stop().animate({left: '-3000px'},1000, function(){ $(this).hide();});
+    });
+ 
   });
    
     
@@ -37,7 +40,7 @@
 </head>
 <body>
   <button id="button"> Click Me </button>
-  <div id="slider">HEY </div>
+  <div id="slider"></div>
 </body>
 </html>
 
