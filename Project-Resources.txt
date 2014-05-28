@@ -25,3 +25,17 @@ http://www.williammora.com/2013/03/nodejs-tutorial-building-chatroom-with.html
 //Dice Roll Simulator
 https://github.com/pschlump/dice-roller
 
+//nodejs beginner tutorial
+download node and npm (node pony manager (no it's really package)) for your platform
+	-windows
+		-just download it from the site and it does everything for you
+	-mac 
+		-no idea. package manager? download? rub goats blood on your cpu and say "node"
+		 three times?
+	-linux 
+		-apt-get or yum, a more updated version my be available from a repo
+
+from terminal:
+	sudo npm install learnyounode
+
+then you can run the tutorial from terminal by typing 'learnyounode' and following the instructions
