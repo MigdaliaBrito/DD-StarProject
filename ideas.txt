@@ -1,0 +1,2 @@
+Map:
+	Sidebar that shows most recently selected (/currently) PC and NPC - shows detailed stats of each
