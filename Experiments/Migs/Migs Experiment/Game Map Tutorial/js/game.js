@@ -2,6 +2,8 @@ var Game = {};
 
 Game.fps = 30;
 
+
+//Creates actual canvas to work in
 Game.initialize = function() {
     this.entities = [];
     this.context = document.getElementById("gamearea").getContext("2d");
