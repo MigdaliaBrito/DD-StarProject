@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    body{
+      width: 100%;
+    }
+    #wrap{
+      text-align: center;
+      width: 80%;
+      margin: 0 auto;
+    }
+    canvas{
+      border: 1px solid black;
+      box-style: border-box;
+      width: 400px;
+      height: 400px;
+      cursor: pointer;
+    }
+    
+    /*img
+    {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      z-index: -1;
+      display:none;
+      opacity:0.7;
+      filter:alpha(opacity=40); /* For IE8 and earlier */
+    } */
+  </style>
+  <title> Canvas Test  </title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <h1> Canvas Test </h1>
+    <!--<img src="grass.jpg" alt="grass"/>-->
+    <canvas width="400px" height="400px" id="tutorial">Please don't see this</canvas>
+    
+  </div>
+  <script>
+    $(document).ready(function(){
+      var entities = [];
+      var width = parseInt($("#tutorial").attr('width'), 10);
+      var oLeft = $("#tutorial").offset().left;
+      var oTop = $("#tutorial").offset().top;
+      var currentMousePos = {x : -1, y:-1};
+      var image = new Image();
+      image.src = "grass.jpg";
+      
+      
+      $(document).mousemove(function(event) {
+        currentMousePos.x = event.pageX;
+        currentMousePos.y = event.pageY;
+        //console.log(currentMousePos);
+      });
+      
+      $("img").css({left: oLeft, top: oTop}).show();
+      
+      $("#tutorial").click(function(){
+        
+        var x = currentMousePos.x;
+        var y = currentMousePos.y;
+        
+        console.log(oLeft + "  " + oTop);
+        //console.log("mouse: " + x + "  " + y);
+        if(x >= oLeft && x <= oLeft+width && y >= oTop && y <= oTop+width){
+          x -= oLeft;
+          y -= oTop;
+          console.log("mouse: " + x + "  " + y);
+          x = Math.floor(x / 20) * 20;
+          y = Math.floor(y / 20) * 20;// + oTop;
+          console.log("mouse: " + x + "  " + y);
+          entities.push([x, y, 20, 20]);
+        }
+        draw();
+      
+      });
+      function draw(){     
+      
+        var canvas = $('#tutorial')[0];
+        var ctx = canvas.getContext('2d');
+        
+        ctx.clearRect ( 0 , 0 , width ,width);
+        ctx.globalAlpha = 0.8;
+        ctx.drawImage(image, 0, 0, width, width);
+        ctx.globalAlpha = 1;
+        for( var i = 0; i < width; i+= 20){  
+         
+          ctx.beginPath();
+          ctx.moveTo(0, i);
+          ctx.lineTo(width, i);
+          ctx.closePath();
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.moveTo(i, 0);
+          ctx.lineTo(i, width-1);
+          ctx.closePath();
+          ctx.stroke();
+        }       
+        for(var i = 0; i < entities.length; i++){
+          ctx.fillRect(entities[i][0],entities[i][1],entities[i][2],entities[i][3]);
+        }
+      }
+      
+      draw();
+    
+      
+      
+    });
+  </script>
+</body>
+</html>
