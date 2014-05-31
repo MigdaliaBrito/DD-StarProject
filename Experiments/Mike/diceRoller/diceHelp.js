@@ -6,6 +6,5 @@ function rollDie(type, amount){
   for(var i = 0; i < amount; i++)    {
     rolls[rolls.length] =  Math.floor((Math.random()*type)+1);    
   }
-  
   return rolls;
 }
