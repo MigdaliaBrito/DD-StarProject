@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <title> Drop Down Test </title>
+  <style>
+    .available{
+      background-color: rgba(51, 255, 51, .7);
+    }
+    .chosen{
+      background-color: rgba(255, 0, 0, .7);
+    }
+  </style>
+  
+  <script src="../../includes/jquery-1.11.1.js"></script>
+  
+</head>
+<body>
+  <div class="wrapper">
+    <h1> Drop Down Test </h1>
+    <label for="Strength">Strength</label><select name="Strength"></select><br/>
+    <label for="Strength">Dexterity</label><select name="Dexterity"></select><br/>
+    <label for="Strength">Intelligence</label><select name="Intelligence"></select>
+  </div>
+  
+  <script>
+  $(document).ready(function(){
+    var i = 0;
+    var lastSelected;
+    $('select').append(      
+      "<option name='default' value='default'> </option>",
+      "<option name='1' value='1'>1</option>",
+      "<option name='2'  value='2'>2</option>",
+      "<option name='3'  value='3'>3</option>",
+      "<option name='4'  value='4'>4</option>",
+      "<option name='5'  value='5'>5</option>",
+      "<option name='6'  value='6'>6</option>"      
+    );
+    $('option').addClass("available");
+   
+    $("select").click(function(){
+      // get last value selected
+      lastSelected = this.value;
+    }).change(function(){
+      var chosenOption = $("option:selected", this).attr('name');
+      console.log("enabling click on " + lastSelected);
+      $('option[name=' + lastSelected + ']:not([name="default"])').toggleClass('chosen').toggleClass('available').prop('disabled', false);
+      
+      console.log("Last: " + lastSelected);
+      
+      $('option[name='+chosenOption+']:not([name="default"])').toggleClass('chosen').toggleClass('available').prop('disabled', true);
+      
+    });
+  });
+  </script>
+</body>
+</html>
