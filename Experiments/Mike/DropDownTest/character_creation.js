@@ -23,13 +23,13 @@ function abilityDiceHelper(){
     var thisAbility = rollDice(4, 6);
     var minimum = Math.min.apply(null, thisAbility);
     var minIndex = thisAbility.indexOf(minimum);
-    var sum = 0;
-    thisAbility.splice(minIndex, 1);    
+    var sum = 0;    
+    thisAbility.splice(minIndex, 1);     
     for(var j = 0; j < thisAbility.length; j++)
       sum += thisAbility[j];
     abilityRolls.push(sum);
   }
-  return abilityRolls;
+  return abilityRolls.sort(function(a, b){return a-b});
 }
 
 function outputRolledDice(dice){
