@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title> Ability Roller </title>
+  <link rel="stylesheet" type="text/css" href="../includes/styles.css"/>
+  <script src="../../includes/jquery-1.11.1.js"></script>
+  <script src="character_creation.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <h1> Character Creation </h1>
+    <div class="leftColumn">
+      <form>
+        <label for="race">Race</label><select id="race" name="race"></select>
+        <div class="abilities">
+          <fieldset>
+            <legend>Abilities</legend>
+            <ul>
+              <li><label for="strength">Strength</label><select id="strength" name="strength"></select> </li>
+              <li><label for="dexterity">Dexterity</label><select id="dexterity" name="dexterity"></select> </li>
+              <li><label for="constitution">Constitution</label><select id="constitution" name="constitution"></select> </li>
+              <li><label for="intelligence">Intelligence</label><select id="intelligence" name="intelligence"></select> </li>
+              <li><label for="wisdom">Wisdom</label><select id="wisdom" name="wisdom"></select> </li>
+              <li><label for="charisma">Charisma</label><select id="charisma" name="charisma"></select> </li>
+            </ul>
+          </fieldset>
+        </div>
+      </form>
+      <br/><br/>
+      <p> Notes: drop down lists are all auto-populated via jquery, with the same options.
+      These options are be generated from the dice rolls. Their 'value' is the attribute value,
+      and the name is  a unique identifier for each option (as there can be duplicate
+      dice rolls). Selecting one prevents its selection again in other attribute drop-downs.
+      
+      Race selector currently does noooooothing
+      </p>
+    </div>
+  </div>
+  
+  <script>
+  $(document).ready(function(){
+    setupRace();
+    setupAbilities();
+    
+  });
+  </script>
+</body>
+</html>

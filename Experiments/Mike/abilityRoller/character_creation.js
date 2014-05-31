@@ -33,34 +33,46 @@ function abilityDiceHelper(){
 }
 
 function outputRolledDice(dice){
-  $("<ul id='dice'></ul>").insertAfter($('h1'));
+  $("div.abilities").append($("<ul id='dice'></ul>"));
   $.each(dice, function(index, value){    
     $("#dice").append('<li>' + value + '</li>');
   });
 }
 
+function setupRace(){
+  $("#race").append(
+    "<option name='human' value='human'>Human</option>",
+    "<option name='dwarf' value='dwarf'>Dwarf</option>",
+    "<option name='elf' value='elf'>Elf</option>",
+    "<option name='gnome' value='gnome'>Gnome</option>",
+    "<option name='half-elf' value='half-elf'>Half-elf</option>",
+    "<option name='half-orc' value=''half-orc'>Half-orc</option>",
+    "<option name='halfling' value='halfling'>Halfling</option>"
+  );
+}
+
 /* Sets up the attributes drop down */
-function setupAttributes(){
+function setupAbilities(){
     console.log("test");
     var i = 0;
     var lastSelected;
     var abilities = abilityDiceHelper();
     outputRolledDice(abilities);    
-    $('select').append("<option name='default' value='default'> </option>");
+    $('.abilities select').append("<option name='default' value='default'> </option>");
     for(var i = 0; i < abilities.length; i++){
-      $('select').append(      
+      $('.abilities select').append(      
         "<option name='" + i + "' value='" + abilities[i] + "'>" + abilities[i] + "</option>"
       );     
     }
-    $('option').addClass("available");
+    $('.abilities option').addClass("available");
    
-    $("select").click(function(){
+    $(".abilities select").click(function(){      
       // get last value selected
       lastSelected = $('option:selected', this).attr('name');
     }).change(function(){
       var chosenOption = $("option:selected", this).attr('name');
       //console.log("Last: " + lastSelected + "\tNew: " + chosenOption);
       $('option[name=' + lastSelected + ']:not([name="default"])').toggleClass('chosen').toggleClass('available').prop('disabled', false); 
-      $('option[name='+chosenOption+']:not([name="default"])').toggleClass('chosen').toggleClass('available').prop('disabled', true);
+      $('option[name=' + chosenOption + ']:not([name="default"])').toggleClass('chosen').toggleClass('available').prop('disabled', true);
     });
 }
