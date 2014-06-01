@@ -13,6 +13,7 @@
       <form>
         <label for="race">Race</label><select id="race" name="race"></select>
         <div class="abilities">
+          <ul id='dice'></ul>
           <fieldset>
             <legend>Abilities</legend>
             <ul>
@@ -23,6 +24,7 @@
               <li><label for="wisdom">Wisdom</label><select id="wisdom" name="wisdom"></select> </li>
               <li><label for="charisma">Charisma</label><select id="charisma" name="charisma"></select> </li>
             </ul>
+            <button id="roll">Roll</button>
           </fieldset>
         </div>
       </form>
@@ -40,8 +42,10 @@
   <script>
   $(document).ready(function(){
     setupRace();
-    setupAbilities();
-    
+    $("#roll").click(function(){
+      setupAbilities();
+      return false;
+    });
   });
   </script>
 </body>

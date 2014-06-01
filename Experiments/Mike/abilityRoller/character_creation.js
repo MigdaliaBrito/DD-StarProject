@@ -33,7 +33,7 @@ function abilityDiceHelper(){
 }
 
 function outputRolledDice(dice){
-  $("div.abilities").append($("<ul id='dice'></ul>"));
+  $("#dice li").remove();
   $.each(dice, function(index, value){    
     $("#dice").append('<li>' + value + '</li>');
   });
@@ -52,12 +52,12 @@ function setupRace(){
 }
 
 /* Sets up the attributes drop down */
-function setupAbilities(){
-    console.log("test");
+function setupAbilities(){    
     var i = 0;
     var lastSelected;
     var abilities = abilityDiceHelper();
-    outputRolledDice(abilities);    
+    outputRolledDice(abilities);
+    $('.abilities select option').remove();
     $('.abilities select').append("<option name='default' value='default'> </option>");
     for(var i = 0; i < abilities.length; i++){
       $('.abilities select').append(      
