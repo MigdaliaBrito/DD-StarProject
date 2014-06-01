@@ -3,7 +3,7 @@
  * @param type: integer - the dice to roll (ie d6, d8, d10 ) 
  * @return Array of roll values
  * Example: To roll 4d6 - rollDice(4, 6);
- */
+ */ 
 function rollDice(amount, type){
   if(isNaN(type) || isNaN(amount)) return 0;
   var rolls = []
@@ -32,10 +32,22 @@ function abilityDiceHelper(){
   return abilityRolls.sort(function(a, b){return a-b});
 }
 
+/* Display rolled dice */
 function outputRolledDice(dice){
   $("#dice li").remove();
   $.each(dice, function(index, value){    
     $("#dice").append('<li>' + value + '</li>');
+  });
+}
+
+/* Create a new character */
+function createPlayer(){  
+  setupRace();
+  setupTable();
+  $("#roll").click(function(){
+    clearTable();
+    setupAbilities();
+    return false;
   });
 }
 
@@ -46,9 +58,18 @@ function setupRace(){
     "<option name='elf' value='elf'>Elf</option>",
     "<option name='gnome' value='gnome'>Gnome</option>",
     "<option name='half-elf' value='half-elf'>Half-elf</option>",
-    "<option name='half-orc' value=''half-orc'>Half-orc</option>",
+    "<option name='half-orc' value='half-orc'>Half-orc</option>",
     "<option name='halfling' value='halfling'>Halfling</option>"
   );
+  $("#race").change(function(){      
+    $('.racialBonus').text("0");
+    $('.racialBonus').each(function(){
+      $(this).text(Character.racialBonus[$("#race").val()][$(this).attr('id')]);
+      calculateTotals();
+    });
+  }); // end change
+  $("#race").change();
+    
 }
 
 /* Sets up the attributes drop down */
@@ -65,7 +86,7 @@ function setupAbilities(){
       );     
     }
     $('.abilities option').addClass("available");
-   
+    
     $(".abilities select").click(function(){      
       // get last value selected
       lastSelected = $('option:selected', this).attr('name');
@@ -74,5 +95,51 @@ function setupAbilities(){
       //console.log("Last: " + lastSelected + "\tNew: " + chosenOption);
       $('option[name=' + lastSelected + ']:not([name="default"])').toggleClass('chosen').toggleClass('available').prop('disabled', false); 
       $('option[name=' + chosenOption + ']:not([name="default"])').toggleClass('chosen').toggleClass('available').prop('disabled', true);
+      
+      calculateTotal($(this));
+      calculateModifier($(this));
     });
+}
+
+/* Add totals and modifiers columns to table */
+function setupTable(){  
+    $(".abilities tr:not(:first)").each(function(){
+      var ability = $(":first-child",this).children().eq(0).prop('for')
+      $(this).append("<td class='abilityTotal' id='" + ability + "Total'></td>",
+      "<td class='abilityModifier' id='" + ability + "Modifier'></td>");
+    });
+}
+
+/* Calculate all totals */
+function calculateTotals(){
+  $(".abilities select").each(function(){
+    if($(this).prop('value') && $(this).prop('value') != 'default'){
+      calculateTotal($(this));      
+      calculateModifier($(this));
+    }
+  });
+}
+
+/* Calculate individual total */
+function calculateTotal(ability){
+  var abilityName = ability.prop('name');
+  var value = parseInt(ability.prop('value'), 10);
+  var racialBonus = parseInt($('#' + abilityName + "Bonus").text(),10);
+  var total = value + racialBonus;
+  $("#" + abilityName + "Total").text(total);
+}
+
+/* Clear the totals/modifiers columns */
+function clearTable(){
+  $('.abilityTotal, .abilityModifier').text("");
+}
+
+/* Calculate modifier */
+function calculateModifier(ability){
+  var abilityName = ability.prop('name');
+  var total = parseInt($('#' + abilityName + "Total").text(), 10);
+  //console.log(total);
+  total = Math.floor(total / 2) * 2;
+  var modifier = total - (total / 2) - 5;
+  $("#" + abilityName + "Modifier").text(modifier);
 }
