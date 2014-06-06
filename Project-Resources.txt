@@ -39,3 +39,9 @@ from terminal:
 	sudo npm install learnyounode
 
 then you can run the tutorial from terminal by typing 'learnyounode' and following the instructions
+
+//Moo Tools
+http://mootools.net/
+
+//Mootorial :)
+http://www.mootorial.com/wiki/mootorial/00-whatisit
