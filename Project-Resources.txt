@@ -48,3 +48,6 @@ http://www.mootorial.com/wiki/mootorial/00-whatisit
 
 //MongoDB Documentation
 http://docs.mongodb.org/manual/
+
+//MongoDB Node.JS Query Documentaiton
+http://mongodb.github.io/node-mongodb-native/markdown-docs/queries.html
