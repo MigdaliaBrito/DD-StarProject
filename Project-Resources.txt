@@ -39,3 +39,15 @@ from terminal:
 	sudo npm install learnyounode
 
 then you can run the tutorial from terminal by typing 'learnyounode' and following the instructions
+
+//Moo Tools
+http://mootools.net/
+
+//Mootorial :)
+http://www.mootorial.com/wiki/mootorial/00-whatisit
+
+//MongoDB Documentation
+http://docs.mongodb.org/manual/
+
+//MongoDB Node.JS Query Documentaiton
+http://mongodb.github.io/node-mongodb-native/markdown-docs/queries.html
