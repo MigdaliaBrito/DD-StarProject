@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>Choose Race Display Character</title>
+
+    <!-- JQuery Import -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        //Jquery programming goes here
+
+    }); //end JQuery Ready function jawn.
+    </script>
+
+    <!-- Begin Character Appearance Code -->
+    <script type="text/javascript">
+    function characterimage(race){
+    	var dynamic_src="";
+    	switch(race){
+    		case "human":
+    		dynamic_src="/images/human.jpg";
+    		break;
+
+    		case "Halfling":
+    		dynamic_src="/images/halfling.jpg";
+    		break;
+
+    		case "Gnome":
+    		dynamic_src="/images/gnome.jpg";
+    		break;
+    		
+    		case "Half-Orc":
+    		dynamic_src="/images/half_orc.jpg";
+    		break;
+
+     		case "Dwarf":
+    		dynamic_src="/images/dwarf.jpg";
+    		break;
+    		
+    		case "Half-Elf":
+    		dynamic_src="/images/half_elf.jpg";
+    		break;
+    		
+    		case "Elf":
+    		dynamic_src="/images/elf.jpg";
+    		break;
+    	}//end switch statement
+    	$('#image_to_be_replaced').attr('src',dynamic_src);
+
+    }//end of characterimage function
+
+    </script>
+    <!-- End Character Appearance Code -->
+</head>
+
+<body>
+    <center>
+        <strong>Choose your character</strong>
+    </center>
+
+    <center>
+    <select name="Characters" onchange="characterimage(this.value)">
+        <option value="human">Human</option>
+        <option value="Halfling">Halfling</option>
+        <option value="Gnome">Gnome</option>
+        <option value="Half-Orc">Half-Orc</option>
+        <option value="Dwarf">Dwarf</option>
+        <option value="Half-Elf">Half-Elf</option>
+        <option value="Elf">Elf</option>
+    </center>
+
+
+
+
+    </select>
+
+
+</body>
+
+</html>
