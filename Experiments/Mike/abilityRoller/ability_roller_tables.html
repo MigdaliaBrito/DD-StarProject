@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <title> Ability Roller </title>
+  <link rel="stylesheet" type="text/css" href="../includes/styles.css"/>
+  <script src="../../includes/jquery-1.11.1.js"></script>
+  <script src="character_creation.js"></script>
+  <script src="Character.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <h1> Character Creation </h1>
+    <div class="leftColumn">
+      <form>
+        <label for="race">Race</label><select id="race" name="race"></select>
+        <div class="abilities">
+          <ul id='dice'></ul>
+          
+          
+            <table>
+            <tr> <th>Ability </th><th>Roll</th><th>Racial Bonus </th><th>Total</th> <th> Modifier </th> </tr>
+            <tr> <td> <label for="strength">Strength</label> </td> <td><select id="strength" name="strength"></select></td> <td class='racialBonus' id="strengthBonus"/></tr>
+            <tr> <td> <label for="dexterity">Dexterity</label></td> <td> <select id="dexterity" name="dexterity"></select> </td><td class='racialBonus' id="dexterityBonus"/> </tr>
+            <tr> <td> <label for="constitution">Constitution</label> </td> <td> <select id="constitution" name="constitution"></select></td><td class='racialBonus' id="constitutionBonus"/> </tr>
+            <tr> <td> <label for="intelligence">Intelligence</label> </td> <td> <select id="intelligence" name="intelligence"></select></td><td class='racialBonus' id="intelligenceBonus"/> </tr>
+            <tr> <td> <label for="wisdom">Wisdom</label> </td> <td> <select id="wisdom" name="wisdom"></select> </td><td class='racialBonus' id="wisdomBonus"/> </tr>
+            <tr> <td> <label for="charisma">Charisma</label> </td> <td> <select id="charisma" name="charisma"></select> </td><td class='racialBonus' id="charismaBonus"/> </tr>
+            </table>
+            <button id="roll">Roll</button>
+          
+        </div>
+      </form>
+      <br/><br/>
+      <p> Notes: drop down lists are all auto-populated via jquery, with the same options.
+      These options are be generated from the dice rolls. Their 'value' is the attribute value,
+      and the name is  a unique identifier for each option (as there can be duplicate
+      dice rolls). Selecting one prevents its selection again in other attribute drop-downs.
+      
+      Race selector currently does noooooothing
+      </p>
+    </div>
+  </div>
+  
+  <script>
+  $(document).ready(function(){
+    createPlayer();
+  });
+  </script>
+</body>
+</html>

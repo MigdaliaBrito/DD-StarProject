@@ -8,12 +8,16 @@ html{
   margin-top: 50px;
 }
 .available{
-  background-color: rgba(51, 255, 51, .7);
+  background-color: rgba(51, 255, 51, .7);  
 }
 .chosen{
-  background-color: rgba(255, 0, 0, .7);
+  background-color: rgba(255, 0, 0, .7); 
 }
+fieldset{
+  border-color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
 
+}
 select{
   margin: 10px;
 }
@@ -21,7 +25,18 @@ select{
   text-align: left;
   list-style-type: none;
 }
-
+table{
+  border:1px solid black;
+  padding: 10px;
+  border-color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+  border-collapse: collapse;
+}
+td{
+  padding: 5px;
+  border: 1px dotted black;
+  width: 50px;
+}
 #dice li{
   text-align: left;
   width: 16px;
@@ -34,7 +49,7 @@ select{
   
 }
 div.leftColumn{
-    width: 33%;
+    width: 50%;
 }
 .abilities {
     width: 100%;
@@ -46,7 +61,7 @@ label, input {
 }
 
 label {
-    width: 50%;
+    width: 100%;
     /* positions the label text beside the input */
     text-align: left;
 }
