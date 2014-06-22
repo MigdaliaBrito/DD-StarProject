@@ -52,7 +52,7 @@ function createPlayer(){
 }
 
 function setupRace(){
-  $("#race").append(
+  $("#raceSelect").append(
     "<option name='human' value='human'>Human</option>",
     "<option name='dwarf' value='dwarf'>Dwarf</option>",
     "<option name='elf' value='elf'>Elf</option>",
@@ -61,14 +61,19 @@ function setupRace(){
     "<option name='half-orc' value='half-orc'>Half-orc</option>",
     "<option name='halfling' value='halfling'>Halfling</option>"
   );
-  $("#race").change(function(){      
+  $("#raceSelect").change(function(){ 
+    console.log("helllooo");         
     $('.racialBonus').text("0");
+    var race = $("#raceSelect").val();
+    var bonuses = Character.racialBonus[race];
+    console.log("race: " + race);
+    console.log("bonuses: " + bonuses);
     $('.racialBonus').each(function(){
-      $(this).text(Character.racialBonus[$("#race").val()][$(this).attr('id')]);
+      $(this).text(bonuses[$(this).attr('id')]);
       calculateTotals();
     });
   }); // end change
-  $("#race").change();
+  $("#raceSelect").change();
     
 }
 
@@ -78,7 +83,7 @@ function setupAbilities(){
     var lastSelected;
     var abilities = abilityDiceHelper();
     outputRolledDice(abilities);
-    $('.abilities select option').remove();
+    $('.abilities select option').remove(); // clear dropdowns on reroll
     $('.abilities select').append("<option name='default' value='default'> </option>");
     for(var i = 0; i < abilities.length; i++){
       $('.abilities select').append(      
@@ -112,8 +117,9 @@ function setupTable(){
 
 /* Calculate all totals */
 function calculateTotals(){
-  $(".abilities select").each(function(){
-    if($(this).prop('value') && $(this).prop('value') != 'default'){
+  $(".abilities select").each(function(){    
+    if($(this).prop('value') && !isNaN(parseInt($(this).prop('value'), 10))){
+      console.log(isNaN(parseInt($(this).prop('value'), 10)));
       calculateTotal($(this));      
       calculateModifier($(this));
     }
@@ -125,7 +131,13 @@ function calculateTotal(ability){
   var abilityName = ability.prop('name');
   var value = parseInt(ability.prop('value'), 10);
   var racialBonus = parseInt($('#' + abilityName + "Bonus").text(),10);
-  var total = value + racialBonus;
+  if(!isNaN(value)){
+    var total = value + racialBonus;
+  }
+  else{
+    console.log(value);
+    var total = "";
+  }
   $("#" + abilityName + "Total").text(total);
 }
 
@@ -140,6 +152,9 @@ function calculateModifier(ability){
   var total = parseInt($('#' + abilityName + "Total").text(), 10);
   //console.log(total);
   total = Math.floor(total / 2) * 2;
-  var modifier = total - (total / 2) - 5;
+  if(!isNaN(total)){
+    var modifier = total - (total / 2) - 5;
+  }
+  else var modifier = "";
   $("#" + abilityName + "Modifier").text(modifier);
 }

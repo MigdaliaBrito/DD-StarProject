@@ -1,0 +1,90 @@
+html{
+  background-color: rgba(128, 128, 128, .5);
+  height: 100%;
+}
+body{
+  background-color: rgba(211, 211, 211, .5);
+  width: 90%;
+  margin: 0 auto;  
+  height: 100%;
+}
+header{
+  background: url('../images/d4.png') left center no-repeat, url('../images/d20.png') right center no-repeat;
+  background-color: rgba(0, 0, 0, .4);
+  height: 150px;
+  width: 100%;
+ }
+ label{
+  display:block;
+ }
+.available{
+  background-color: rgba(51, 255, 51, .7);  
+}
+.chosen{
+  background-color: rgba(255, 0, 0, .7); 
+}
+fieldset{
+  border: 1px solid rgb(0, 0, 0);
+}
+select{
+  margin: 10px;
+}
+.abilities ul{
+  text-align: left;
+  list-style-type: none;
+}
+table{
+  border:1px solid black;
+  padding: 10px;
+  border-color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+  border-collapse: collapse;
+}
+td{
+  padding: 5px;
+  border: 1px dotted black;
+  width: 50px;
+}
+#dice ul{
+  display: inline;
+}
+#dice li{
+  text-align: left;
+  width: 16px;
+  display: inline-block;
+  padding: 10px;
+  
+  margin: 0px;
+  border: 1px solid black;  
+  background-color: rgba(255, 255, 255, .8);
+  
+}
+div.leftColumn{
+    width: 50%;
+}
+.abilities {
+    width: 100%;
+}
+button{
+  display:inline-block;
+}
+select{
+  min-width: 45px;
+}
+
+/*label, input {
+    
+    /*isplay: inline-block;
+};
+
+label {
+    width: 100%;
+   
+    text-align: left;
+}
+
+label + input {
+    width: 30%;
+    
+    margin: 0 30% 0 4%;
+}*/

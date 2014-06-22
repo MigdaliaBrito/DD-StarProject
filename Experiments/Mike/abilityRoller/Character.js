@@ -1,8 +1,4 @@
-function Character(race){
-  
-  Character.test = "Hello";
-  
-  
+function Character(race){  
   this.race = race;  
 
   Character.prototype.toString = function(){
