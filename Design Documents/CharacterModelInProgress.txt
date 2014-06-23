@@ -1,0 +1,46 @@
+{
+  "name": "Golgar",
+  "password": "test",
+  "class": "fighter",
+  "level": 1,
+  "race": "half-orc",
+  "size": "medium",
+  "gender": "male",
+  "alignment": "chaotic good", 
+  "religion": "none",
+  "height": "77",
+  "weight": "290",
+  "description": "Cool as hell, doper than the rest, ready to block with your face and wears a sweet purple vest",
+  "stats": 
+    [
+    {"total": 
+      {
+        "str": 15,
+        "dex": 8,
+        "con": 15,
+        "intel": 12,
+        "wis": 9,
+        "chr":  12
+      }}
+    ,
+    {"bonus": 
+      {
+        "str": 0,
+        "dex": 0,
+        "con": 0,
+        "intel": 0,
+        "wis": 0,
+        "chr":  0
+      }}
+    ,
+    {"modifier": 
+      {
+        "str": 2,
+        "dex": -1,
+        "con": 3,
+        "intel": 1,
+        "wis": -1,
+        "chr":  0
+      }}    
+    ]  
+}
