@@ -2,7 +2,9 @@
 
 var Game = {};
 var xMax,
-    yMax;
+    yMax,
+    block = 30,
+    jeffrey = block / 2;
 
 $(document).ready(function(){
   xMax = parseInt($('#gamearea').attr('width'), 10);
@@ -22,7 +24,7 @@ Game.draw = function(){
   for(var i = 0; i < this.entities.length; i++){
     this.entities[i].draw(this.context);
   }
-  for(var i=0; i< width; i+=30){
+  for(var i=0; i< width; i+=block){
   	this.context.beginPath();
   	this.context.moveTo(0,i);
   	this.context.lineTo(width,i);

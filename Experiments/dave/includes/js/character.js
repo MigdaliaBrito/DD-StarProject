@@ -1,5 +1,15 @@
 var xMax,
-    yMax;
+    yMax,
+    xTar,
+    yTar,
+    xLast=0,
+    yLast=0,
+    speed = 5,
+    clicked = false,
+    distance;
+
+
+
 
 $(document).ready(function(){
   xMax = parseInt($('#gamearea').attr('width'), 10);
@@ -7,6 +17,14 @@ $(document).ready(function(){
 
   console.log(xMax);
   console.log(yMax);
+
+  $("#gamearea").click(function(e){
+    var canvasOffset = $(this).parent().offset();
+    xTar = e.pageX - canvasOffset.left;
+    yTar = e.pageY - canvasOffset.top; 
+    clicked = true;
+    //alert("clicked: x:"+xTar+" y:"+yTar)
+  });
 });
 
 function Character(x, y){
@@ -23,10 +41,10 @@ Character.prototype.draw = function(context){
 };
 
 Character.prototype.update = function(context){
-  if (Key.isDown(Key.UP)) this.moveUp();
-  if (Key.isDown(Key.LEFT)) this.moveLeft();
-  if (Key.isDown(Key.DOWN)) this.moveDown();
-  if (Key.isDown(Key.RIGHT)) this.moveRight();
+  if(clicked){
+    this.moveMouse(xTar, yTar);
+    clicked = false;
+  }
 }
 
 Character.prototype.moveUp = function(){
@@ -49,3 +67,31 @@ Character.prototype.moveRight = function(){
     this.x += 30;
     console.log(this.x);
 };
+
+Character.prototype.moveMouse = function(xTar, yTar){
+  var indicesTar = convertToIndex(xTar, yTar);
+  var indicesLast = convertToIndex(xLast, yLast);
+  console.log(indicesLast);
+  console.log(indicesTar);
+
+  if(indicesTar[0] != indicesLast[0] && indicesTar[1] != indicesLast[1]){ 
+    var calculatedSpeed = Math.sqrt(Math.pow(speed,2)*2);
+    if(!(Math.abs(indicesLast[0] - indicesTar[0]) == Math.abs(indicesLast[1] - indicesTar[1])))
+      calculatedSpeed = Math.floor(calculatedSpeed);
+  }
+  else{ 
+    var calculatedSpeed = speed;
+  }/*MERICA*/
+  console.log("DAT SPEED " + calculatedSpeed);
+  
+  distance =  Math.sqrt(Math.abs(Math.pow(indicesTar[0] - indicesLast[0], 2) + Math.pow(indicesTar[1] - indicesLast[1], 2) ) );
+  console.log("distance: "+distance);
+  if(distance <= calculatedSpeed){
+      var peter = convertToPix(xTar, yTar);
+      this.x = peter[0];
+      this.y = peter[1];
+      xLast = this.x;
+      yLast = this.y;
+  }
+}
+
