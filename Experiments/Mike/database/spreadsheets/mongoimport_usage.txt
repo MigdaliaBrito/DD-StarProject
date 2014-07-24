@@ -1,0 +1,3 @@
+MongoImport Usage:
+
+mongoimport --db DD --collection classes --type csv --headerline --file classes.csv
